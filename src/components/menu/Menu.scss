@@ -1,0 +1,51 @@
+@import '../../style/variables.scss';
+
+.menu {
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $blue;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    &-hamburger {
+      width: 30px;
+      height: 30px;
+      margin-left: 20px;
+      fill: $white;
+      cursor: pointer;
+    }    
+    
+    &-gap {
+      flex-grow: 1;
+    }
+    
+    &-signin {
+      height: 25px;
+      margin-right: 20px;
+      background-color: $white;
+      padding: 0 15px;
+      border-radius: 15px;
+      color: $blue;
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    
+    &-signup {
+      height: 30px;
+      margin-right: 20px;
+      color: $white;
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    
+  }

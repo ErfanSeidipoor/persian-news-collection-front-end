@@ -1,0 +1,19 @@
+@import '../../style/variables.scss';
+
+.more {
+    height: 15px;
+    width: fit-content;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &-circle {
+        width: 5px;
+        height: 5px;
+        margin: 0 0.5px;
+        border-radius: 50%;
+        background-color: $gray;
+        position: relative;
+        top: 4px;
+    }
+}

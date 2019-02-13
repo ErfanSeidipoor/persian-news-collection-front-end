@@ -1,0 +1,58 @@
+@import '../../style/variables.scss';
+
+.search-box {
+    // max-width: 800px;
+    width: 100%;
+    min-height: 60px;
+    box-sizing: border-box;
+    background-color: rgba( $gray, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 1px 16px 0px rgba(192, 185, 185, 0.75);
+    -moz-box-shadow: 0px 1px 16px 0px rgba(192, 185, 1850, 0.75);
+    box-shadow: 0px 1px 16px 0px rgba(192, 185, 185, 0.75);
+    margin-bottom: 10px;
+    &-input {
+        height: 40px;
+        width: 100%;
+        max-width: 800px;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row-reverse;
+
+        border: .5px solid rgba($gray, 0.75);
+
+    
+
+        &-search-icon {
+            width: 50px;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            fill: $gray;
+            background-color: $light-gray;
+        }
+        
+        &-input {
+            flex-grow: 1;
+            padding:0 10px;
+            border: none;
+            outline: none;
+            direction: rtl;
+            text-align: right;
+            font-size: 15px;
+        }
+        
+        &-cancel-icon {
+            width: 50px;
+            padding: 8px 13px;
+            background-color: burlywood;
+            box-sizing: border-box;
+            cursor: pointer;
+            fill: $gray;
+            background-color: $light-gray;
+        }
+    }
+  }
