@@ -1,0 +1,57 @@
+@import '../../style/variables.scss';
+
+$animation-duration: 1.8s;
+
+.loading-container {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin: 0 auto;
+
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 8px;
+      background: $gray;
+      border-radius: 5px;
+      animation: load $animation-duration ease-in-out infinite;
+      background-color: $gray; 
+      &:before, &:after {
+        position: absolute; 
+        display: block;
+        content: "";
+        animation: load $animation-duration ease-in-out infinite;
+        height: 8px;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      &:before {
+        top: -10px;
+        left: 5px;
+        width: 40px;
+        background: $red;
+      }
+      &:after {
+        bottom: -10px;
+        width: 35px;
+        background: $blue; 
+      }
+    }
+    
+    @keyframes load {
+      0% {
+        transform: translateX(40px);
+      }
+      
+      50% {
+        transform: translateX(-30px);
+      }
+      100% {
+        transform: translateX(40px);
+      }
+    }
+
+}

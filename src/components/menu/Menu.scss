@@ -7,6 +7,7 @@
     width: 100%;
     box-sizing: border-box;
     background-color: $blue;
+    position: relative;
 
     display: flex;
     justify-content: center;
@@ -23,6 +24,7 @@
     
     &-gap {
       flex-grow: 1;
+      display: flex;
     }
     
     &-signin {
@@ -48,4 +50,11 @@
       cursor: pointer;
     }
     
+    .flexbox-loader-container {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      // background-color: $white;
+      height: 3px;
+    }
   }

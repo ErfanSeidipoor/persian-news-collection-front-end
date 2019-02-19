@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
-import './newsCard.scss';
+import PropTypes from 'prop-types';
+
 import Tag from '../tag/tag';
 import More from '../more/more';
+import NewsModel from '../../data_model/newsModel'
+
+import './newsCard.scss';
 
 class NewsCard extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  static propTypes = {
+    News: PropTypes.object.isRequired,
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      NewsModel: NewsModel.from(props.News),
+    }
+  }
 
   renderRight() {
     const imageUrl = "http://www.irna.ir/userfiles/samir/image/Logo_Irna_en.svg";
+    // const imageUrl = this.state.NewsModel.getImageUrl();
     return (
       <div className="news-card-right">
         <div
@@ -20,7 +32,6 @@ class NewsCard extends Component {
       </div>
     )
   }
-
   renderLeft() {
     return (
       <div className="news-card-left">
@@ -39,7 +50,8 @@ class NewsCard extends Component {
     )
   }
   renderLeftImage() {
-    const imageUrl = "https://cdn.isna.ir/d/2017/02/10/3/57436660.jpg";
+    // const imageUrl = "https://cdn.isna.ir/d/2017/02/10/3/57436660.jpg";
+    const imageUrl = this.state.NewsModel.getImageUrl();
     return (
       <div
         className="news-card-left-image"
@@ -49,15 +61,21 @@ class NewsCard extends Component {
   }
   rednerLeftTextsTitle() {
     return (
-      <div className="news-card-left-texts-title">
-      عیدی کارکنان فرداواریز میشودasdasdaszzzzzzzzzzzzzzzz
-      </div>
+      <a
+        className="news-card-left-texts-title"
+        href={this.state.NewsModel.getUrl()}
+        target="_blank"
+        rel="noopener noreferrer" 
+        >
+        {this.state.NewsModel.getTitle()}
+      </a>
     )
   }  
   rednerLeftTextsDescription() {
     return (
       <div className="news-card-left-texts-description">
-راهپیمایی چهلمین سال پیروزی انقلاب اسلامی روز ۲۲ بهمن سال ۹۷ ، پیش از آغاز رسمی مراسم در ساعت ۹ صبح روز دوشنبه، در بیش از هزار شهر و ۱۰ هزار روستا در سراسر کشو34ر با شعار «افتخار به گذشته، امید به آینده» آغاز شد.      </div>
+        {this.state.NewsModel.getDescription()}
+      </div>
     )
   }
   rednerLeftTextsTags() {
@@ -74,22 +92,21 @@ class NewsCard extends Component {
           <Tag Text={"100"} Comment Gray/>
         </div>
 
-        <div className="news-card-left-texts-tags-tag right">
-          <Tag Hashtag Blue/>
-        </div>        
-        <div className="news-card-left-texts-tags-tag right">
-          <Tag Hashtag Blue/>
-        </div>        
-        <div className="news-card-left-texts-tags-tag right">
-          <Tag Hashtag Blue/>
-        </div>        
-        <div className="news-card-left-texts-tags-tag right">
-          <Tag Hashtag Blue/>
-        </div>        
-        <div className="news-card-left-texts-tags-tag right">
-          <More/>
-        </div>
-        
+        {
+          this.state.NewsModel.getTags().map(tag=>
+            <div className="news-card-left-texts-tags-tag right" key={tag}>
+              <Tag Hashtag Blue Text={tag}/>
+            </div>
+          )
+        }
+        {
+          this.state.NewsModel.getTags().length!==0 ?
+          <div className="news-card-left-texts-tags-tag right">
+            <More />
+          </div>          
+          :
+          ""
+        }
       </div>
     )
   }
